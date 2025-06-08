@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BreadBasket - AI That Actually Remembers</title>
+    <title>BreadBasket - The Future of Development</title>
     <style>
         * {
             margin: 0;
@@ -13,215 +13,343 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #0a0a0a;
+            background: #000;
             color: #fff;
-            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* Animated background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, #667eea22 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, #764ba222 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, #667eea11 0%, transparent 50%);
+            animation: pulse 4s ease-in-out infinite alternate;
+            z-index: -1;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.7; }
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 20px;
-        }
-        
-        header {
+            padding: 40px 20px;
             text-align: center;
-            padding: 80px 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
         .logo {
-            font-size: 48px;
-            margin-bottom: 20px;
+            font-size: 72px;
+            margin-bottom: 30px;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
         
         h1 {
-            font-size: 56px;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-size: 64px;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradient 3s ease infinite;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         
         .tagline {
-            font-size: 24px;
+            font-size: 28px;
+            color: #ccc;
+            margin-bottom: 50px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        
+        .mystery-text {
+            font-size: 20px;
             color: #888;
-            margin-bottom: 40px;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        
+        .countdown-section {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 50px 40px;
+            margin: 40px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .countdown-title {
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #667eea;
+            font-weight: 600;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .stat {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 30px 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 16px;
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .email-signup {
+            max-width: 400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .email-input {
+            flex: 1;
+            padding: 18px 24px;
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        
+        .email-input:focus {
+            border-color: #667eea;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .email-input::placeholder {
+            color: #666;
         }
         
         .cta-button {
-            display: inline-block;
-            padding: 16px 40px;
+            padding: 18px 32px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             text-decoration: none;
-            border-radius: 8px;
-            font-size: 20px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
             font-weight: 600;
-            transition: transform 0.2s;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         .cta-button:hover {
             transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
         }
         
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin: 80px 0;
-        }
-        
-        .feature {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 40px;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .feature h3 {
-            font-size: 24px;
-            margin-bottom: 16px;
-        }
-        
-        .feature p {
-            color: #aaa;
-        }
-        
-        .demo-section {
-            text-align: center;
-            margin: 100px 0;
-            padding: 60px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 20px;
-        }
-        
-        .demo-section h2 {
-            font-size: 40px;
-            margin-bottom: 20px;
-        }
-        
-        .demo-section p {
-            font-size: 20px;
-            color: #aaa;
-            margin-bottom: 30px;
-        }
-        
-        .pricing {
-            text-align: center;
-            padding: 80px 0;
-        }
-        
-        .pricing h2 {
-            font-size: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .price-box {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 40px;
-            border-radius: 16px;
-            max-width: 400px;
-            margin: 0 auto;
-            border: 2px solid #667eea;
-        }
-        
-        .price {
-            font-size: 64px;
-            font-weight: bold;
-            margin: 20px 0;
-        }
-        
-        .price-period {
-            font-size: 20px;
-            color: #aaa;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 40px 0;
+        .social-proof {
+            margin-top: 60px;
             color: #666;
+            font-size: 14px;
         }
         
-        .launch-badge {
+        .companies {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 20px;
+            opacity: 0.4;
+        }
+        
+        .company {
+            font-size: 18px;
+            font-weight: 600;
+            color: #444;
+        }
+        
+        .pulse-dot {
             display: inline-block;
-            background: #ff6b6b;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-size: 14px;
+            width: 10px;
+            height: 10px;
+            background: #00ff88;
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: pulse-dot 2s infinite;
+        }
+        
+        @keyframes pulse-dot {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .status-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin-bottom: 20px;
+            font-size: 16px;
+            color: #00ff88;
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 48px; }
+            .tagline { font-size: 22px; }
+            .mystery-text { font-size: 18px; }
+            .email-signup { flex-direction: column; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            .companies { flex-wrap: wrap; gap: 20px; }
         }
     </style>
 </head>
 <body>
+    <div class="bg-animation"></div>
+    
     <div class="container">
-        <header>
-            <div class="launch-badge">🚀 Just Launched!</div>
-            <div class="logo">🍞</div>
-            <h1>BreadBasket</h1>
-            <p class="tagline">The AI Assistant That Actually Remembers</p>
-            <a href="mailto:hello@breadbasket.ai" class="cta-button">Get Early Access →</a>
-        </header>
+        <div class="logo">🍞</div>
+        <h1>BreadBasket</h1>
+        <p class="tagline">The Development Revolution</p>
         
-        <section class="features">
-            <div class="feature">
-                <h3>🧠 Persistent Memory</h3>
-                <p>Unlike ChatGPT, BreadBasket remembers your conversations across sessions. Build on previous discussions without starting over.</p>
-            </div>
-            <div class="feature">
-                <h3>🤖 50+ AI Models</h3>
-                <p>Access OpenAI's complete model lineup. Switch between GPT-4, GPT-3.5, and specialized models instantly.</p>
-            </div>
-            <div class="feature">
-                <h3>💡 Context Aware</h3>
-                <p>Your AI learns your preferences, project details, and communication style. It's like having a team member who never forgets.</p>
-            </div>
-        </section>
+        <div class="status-bar">
+            <span class="pulse-dot"></span>
+            System Status: Pre-Launch Phase
+        </div>
         
-        <section class="demo-section">
-            <h2>See It In Action</h2>
-            <p>Watch how BreadBasket transforms your AI workflow</p>
-            <a href="mailto:hello@breadbasket.ai" class="cta-button">Request Demo</a>
-        </section>
+        <p class="mystery-text">
+            We're building something that will fundamentally change how software gets created. 
+            A breakthrough in AI-powered development that goes beyond assistance to autonomous execution.
+        </p>
         
-        <section class="pricing">
-            <h2>Coming Soon</h2>
-            <div class="price-box">
-                <h3>Early Adopter Special</h3>
-                <div class="price">$47</div>
-                <div class="price-period">one-time payment</div>
-                <p style="margin: 20px 0; color: #aaa;">
-                    • Lifetime access<br>
-                    • All future updates<br>
-                    • Priority support<br>
-                    • Bonus: AI workflow templates
-                </p>
-                <a href="mailto:hello@breadbasket.ai" class="cta-button">Join Waitlist</a>
+        <div class="countdown-section">
+            <h3 class="countdown-title">Early Access Program</h3>
+            
+            <div class="stats-grid">
+                <div class="stat">
+                    <div class="stat-number">100x</div>
+                    <div class="stat-label">Faster Development</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Autonomous Operation</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">Zero</div>
+                    <div class="stat-label">Context Loss</div>
+                </div>
             </div>
-        </section>
-        
-        <footer>
-            <p>© 2025 BreadBasket. Built with ❤️ by indie developers.</p>
-            <p style="margin-top: 10px;">
-                <a href="mailto:hello@breadbasket.ai" style="color: #667eea; text-decoration: none;">Contact</a>
+            
+            <div class="email-signup">
+                <input type="email" class="email-input" placeholder="Enter your email">
+                <button class="cta-button">Join Waitlist</button>
+            </div>
+            
+            <p style="color: #666; font-size: 14px; margin-top: 15px;">
+                Be among the first to experience the future of development
             </p>
-        </footer>
+        </div>
+        
+        <div class="social-proof">
+            <p>Backed by top investors and trusted by leading development teams</p>
+            <div class="companies">
+                <div class="company">ENTERPRISE</div>
+                <div class="company">STARTUPS</div>
+                <div class="company">AGENCIES</div>
+            </div>
+        </div>
     </div>
     
     <script>
-        // Add some subtle animations
-        document.addEventListener('DOMContentLoaded', () => {
-            const features = document.querySelectorAll('.feature');
-            features.forEach((feature, i) => {
-                feature.style.opacity = '0';
-                feature.style.transform = 'translateY(20px)';
+        // Email signup functionality
+        document.querySelector('.cta-button').addEventListener('click', function() {
+            const email = document.querySelector('.email-input').value;
+            if (email) {
+                // For now, just show a success message
+                this.textContent = 'Added!';
+                this.style.background = '#00ff88';
                 setTimeout(() => {
-                    feature.style.transition = 'all 0.5s ease';
-                    feature.style.opacity = '1';
-                    feature.style.transform = 'translateY(0)';
-                }, i * 100);
-            });
+                    this.textContent = 'Join Waitlist';
+                    this.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+                }, 2000);
+                
+                // Here you would normally send the email to your backend
+                console.log('Email signup:', email);
+            }
         });
+        
+        // Enter key support
+        document.querySelector('.email-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.querySelector('.cta-button').click();
+            }
+        });
+        
+        // Animate stats on scroll/load
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-number');
+            stats.forEach(stat => {
+                const text = stat.textContent;
+                if (text.includes('x')) {
+                    // Animate 100x
+                    let current = 1;
+                    const target = 100;
+                    const increment = target / 30;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            stat.textContent = '100x';
+                            clearInterval(timer);
+                        } else {
+                            stat.textContent = Math.floor(current) + 'x';
+                        }
+                    }, 50);
+                }
+            });
+        }
+        
+        // Trigger animations when page loads
+        setTimeout(animateStats, 1000);
     </script>
 </body>
 </html>
